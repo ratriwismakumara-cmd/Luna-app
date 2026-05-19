@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
 /// LunaGrowth — Developmental insights with framework-backed metrics
-class LunaGrowth extends StatelessWidget {
+class LunaGrowth extends StatefulWidget {
   final double? width;
   final double? height;
   const LunaGrowth({super.key, this.width, this.height});
+
+  @override
+  State<LunaGrowth> createState() => _LunaGrowthState();
 
   // ── Design tokens ──
   static const nightIndigo = Color(0xFF2B2447);

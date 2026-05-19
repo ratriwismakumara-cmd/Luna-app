@@ -87,7 +87,7 @@ class _LunaChatState extends State<LunaChat> {
     });
   }
 
-  Map<String, String> _getMode() {
+  Map<String, dynamic> _getMode() {
     try {
       return _modes.firstWhere((m) => m['key'] == _chatMode);
     } catch (_) {
