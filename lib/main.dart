@@ -149,7 +149,7 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.menu_book_sharp,
               size: 24.0,
             ),
-            label: 'Home',
+            label: 'Diary',
             tooltip: '',
           ),
           BottomNavigationBarItem(
@@ -157,7 +157,7 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.trending_up_rounded,
               size: 24.0,
             ),
-            label: 'Home',
+            label: 'Growth',
             tooltip: '',
           ),
           BottomNavigationBarItem(
@@ -165,7 +165,7 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.restaurant,
               size: 24.0,
             ),
-            label: 'Home',
+            label: 'Nutrition',
             tooltip: '',
           ),
           BottomNavigationBarItem(
@@ -173,7 +173,7 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.person_sharp,
               size: 24.0,
             ),
-            label: 'Home',
+            label: 'Profile',
             tooltip: '',
           )
         ],
