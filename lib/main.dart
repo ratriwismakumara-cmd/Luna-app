@@ -129,16 +129,16 @@ class _NavBarPageState extends State<NavBarPage> {
           _currentPage = null;
           _currentPageName = tabs.keys.toList()[i];
         }),
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        selectedItemColor: FlutterFlowTheme.of(context).primary,
-        unselectedItemColor: FlutterFlowTheme.of(context).secondaryText,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        selectedItemColor: Color(0xFF6B5FA6),
+        unselectedItemColor: Color(0xFFB9A7D9),
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home_outlined,
+              Icons.auto_awesome,
               size: 24.0,
             ),
             label: 'Home',
@@ -146,7 +146,7 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home_outlined,
+              Icons.menu_book_sharp,
               size: 24.0,
             ),
             label: 'Home',
@@ -154,7 +154,7 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home_outlined,
+              Icons.trending_up_rounded,
               size: 24.0,
             ),
             label: 'Home',
@@ -162,7 +162,7 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home_outlined,
+              Icons.restaurant,
               size: 24.0,
             ),
             label: 'Home',
@@ -170,7 +170,7 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home_outlined,
+              Icons.person_sharp,
               size: 24.0,
             ),
             label: 'Home',
