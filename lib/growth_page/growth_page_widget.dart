@@ -3,28 +3,28 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'home_page_model.dart';
-export 'home_page_model.dart';
+import 'growth_page_model.dart';
+export 'growth_page_model.dart';
 
-class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({super.key});
+class GrowthPageWidget extends StatefulWidget {
+  const GrowthPageWidget({super.key});
 
-  static String routeName = 'HomePage';
-  static String routePath = '/homePage';
+  static String routeName = 'GrowthPage';
+  static String routePath = '/growthPage';
 
   @override
-  State<HomePageWidget> createState() => _HomePageWidgetState();
+  State<GrowthPageWidget> createState() => _GrowthPageWidgetState();
 }
 
-class _HomePageWidgetState extends State<HomePageWidget> {
-  late HomePageModel _model;
+class _GrowthPageWidgetState extends State<GrowthPageWidget> {
+  late GrowthPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => HomePageModel());
+    _model = createModel(context, () => GrowthPageModel());
   }
 
   @override
@@ -48,7 +48,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
           title: Text(
-            ' Luna',
+            'Page Title',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -71,13 +71,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Container(
-            width: double.infinity,
-            height: double.infinity,
-            child: custom_widgets.LunaChat(
-              width: double.infinity,
-              height: double.infinity,
-            ),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Container(
+                width: double.infinity,
+                height: 680.0,
+                child: custom_widgets.LunaGrowth(
+                  width: double.infinity,
+                  height: 680.0,
+                ),
+              ),
+            ],
           ),
         ),
       ),
