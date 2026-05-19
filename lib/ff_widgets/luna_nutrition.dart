@@ -78,7 +78,7 @@ class LunaNutrition extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          gradient: const LinearGradient(colors: [warmCream, bgWhite], begin: Alignment.topLeft, end: Alignment.bottomRight),
+          gradient: LinearGradient(colors: [warmCream, bgWhite], begin: Alignment.topLeft, end: Alignment.bottomRight),
           border: Border.all(color: champagneGold, width: 1.5, strokeAlign: BorderSide.strokeAlignInside),
         ),
         child: Column(
@@ -197,7 +197,7 @@ class LunaNutrition extends StatelessWidget {
 
   Widget _buildActivityCard() {
     return _card(
-      gradient: const LinearGradient(colors: [lilacWash, bgWhite], begin: Alignment.topLeft, end: Alignment.bottomRight),
+      gradient: LinearGradient(colors: [lilacWash, bgWhite], begin: Alignment.topLeft, end: Alignment.bottomRight),
       children: [
         const Text('Today\'s Activity Context', style: TextStyle(fontFamily: 'DM Serif Display', fontSize: 18, color: textDeep)),
         const SizedBox(height: 10),
@@ -246,7 +246,7 @@ class LunaNutrition extends StatelessWidget {
 
   Widget _buildLunaNote() {
     return _card(
-      gradient: const LinearGradient(colors: [warmCream, bgWhite], begin: Alignment.topLeft, end: Alignment.bottomRight),
+      gradient: LinearGradient(colors: [warmCream, bgWhite], begin: Alignment.topLeft, end: Alignment.bottomRight),
       children: [
         const Text('Luna\'s Note 🌙', style: TextStyle(fontFamily: 'DM Serif Display', fontSize: 18, color: textDeep)),
         const SizedBox(height: 10),

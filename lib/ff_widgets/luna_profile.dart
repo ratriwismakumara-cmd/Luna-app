@@ -53,7 +53,7 @@ class LunaProfile extends StatelessWidget {
               width: 86, height: 86,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                gradient: const LinearGradient(
+                gradient: LinearGradient(
                   colors: [softLavender, lunaPurple],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -137,7 +137,7 @@ class LunaProfile extends StatelessWidget {
       padding: const EdgeInsets.all(22),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(26),
-        gradient: const LinearGradient(
+        gradient: LinearGradient(
           colors: [Color(0xFFFFFFFF), Color(0xFFFFFDFA)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -177,7 +177,7 @@ class LunaProfile extends StatelessWidget {
       padding: const EdgeInsets.all(22),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
-        gradient: const LinearGradient(colors: [lilacWash, bgWhite], begin: Alignment.topLeft, end: Alignment.bottomRight),
+        gradient: LinearGradient(colors: [lilacWash, bgWhite], begin: Alignment.topLeft, end: Alignment.bottomRight),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -212,7 +212,7 @@ class LunaProfile extends StatelessWidget {
       padding: const EdgeInsets.all(22),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(26),
-        gradient: const LinearGradient(
+        gradient: LinearGradient(
           colors: [Color(0xFFFFFFFF), Color(0xFFFFFDFA)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -255,7 +255,7 @@ class LunaProfile extends StatelessWidget {
       padding: const EdgeInsets.all(22),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(26),
-        gradient: const LinearGradient(
+        gradient: LinearGradient(
           colors: [Color(0xFFFFFFFF), Color(0xFFFFFDFA)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -300,7 +300,7 @@ class LunaProfile extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
-        gradient: const LinearGradient(colors: [nightIndigo, Color(0xFF3D3563)], begin: Alignment.topLeft, end: Alignment.bottomRight),
+        gradient: LinearGradient(colors: [nightIndigo, Color(0xFF3D3563)], begin: Alignment.topLeft, end: Alignment.bottomRight),
       ),
       child: Column(
         children: [

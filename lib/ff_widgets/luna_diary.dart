@@ -127,7 +127,7 @@ class _LunaDiaryState extends State<LunaDiary> {
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                gradient: const LinearGradient(colors: [lilacWash, warmCream], begin: Alignment.topLeft, end: Alignment.bottomRight),
+                gradient: LinearGradient(colors: [lilacWash, warmCream], begin: Alignment.topLeft, end: Alignment.bottomRight),
               ),
               child: Column(
                 children: [
@@ -172,7 +172,7 @@ class _LunaDiaryState extends State<LunaDiary> {
       padding: const EdgeInsets.fromLTRB(14, 18, 20, 18),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(26),
-        gradient: const LinearGradient(
+        gradient: LinearGradient(
           colors: [bgWhite, Color(0xFFFFFDFA)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,

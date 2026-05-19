@@ -151,7 +151,7 @@ class _LunaChatState extends State<LunaChat> {
               width: 44, height: 44,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
-                gradient: const LinearGradient(colors: [nightIndigo, Color(0xFF3D3563)], begin: Alignment.topLeft, end: Alignment.bottomRight),
+                gradient: LinearGradient(colors: [nightIndigo, Color(0xFF3D3563)], begin: Alignment.topLeft, end: Alignment.bottomRight),
                 boxShadow: [BoxShadow(color: nightIndigo.withOpacity(0.25), blurRadius: 14, offset: const Offset(0, 4))],
               ),
               child: const Center(child: Text('🌙', style: TextStyle(fontSize: 22))),
@@ -195,7 +195,7 @@ class _LunaChatState extends State<LunaChat> {
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(28),
-        gradient: const LinearGradient(colors: [nightIndigo, Color(0xFF3D3563)], begin: Alignment.topLeft, end: Alignment.bottomRight),
+        gradient: LinearGradient(colors: [nightIndigo, Color(0xFF3D3563)], begin: Alignment.topLeft, end: Alignment.bottomRight),
         boxShadow: [BoxShadow(color: nightIndigo.withOpacity(0.25), blurRadius: 30, offset: const Offset(0, 12))],
       ),
       child: Column(
@@ -304,7 +304,7 @@ class _LunaChatState extends State<LunaChat> {
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(26),
-        gradient: const LinearGradient(colors: [lilacWash, bgWhite], begin: Alignment.topLeft, end: Alignment.bottomRight),
+        gradient: LinearGradient(colors: [lilacWash, bgWhite], begin: Alignment.topLeft, end: Alignment.bottomRight),
         boxShadow: [
           BoxShadow(color: lunaPurple.withOpacity(0.08), blurRadius: 28, offset: const Offset(0, 12)),
           BoxShadow(color: warmCream.withOpacity(0.6), blurRadius: 8, offset: const Offset(0, 3)),
@@ -400,7 +400,7 @@ class _LunaChatState extends State<LunaChat> {
         padding: const EdgeInsets.symmetric(vertical: 14),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(999),
-          gradient: const LinearGradient(colors: [lunaPurple, softLavender]),
+          gradient: LinearGradient(colors: [lunaPurple, softLavender]),
           boxShadow: [BoxShadow(color: lunaPurple.withOpacity(0.35), blurRadius: 24, offset: const Offset(0, 8))],
         ),
         child: const Center(
@@ -551,7 +551,7 @@ class _LunaChatState extends State<LunaChat> {
                   width: 44, height: 44,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    gradient: const LinearGradient(colors: [lunaPurple, softLavender]),
+                    gradient: LinearGradient(colors: [lunaPurple, softLavender]),
                     boxShadow: [BoxShadow(color: lunaPurple.withOpacity(0.35), blurRadius: 20, offset: const Offset(0, 6))],
                   ),
                   child: const Icon(Icons.arrow_upward, color: bgWarm, size: 20),
@@ -589,7 +589,7 @@ class _LunaChatState extends State<LunaChat> {
               ? const BorderRadius.only(topLeft: Radius.circular(22), topRight: Radius.circular(22), bottomLeft: Radius.circular(22), bottomRight: Radius.circular(6))
               : const BorderRadius.only(topLeft: Radius.circular(22), topRight: Radius.circular(22), bottomRight: Radius.circular(22), bottomLeft: Radius.circular(6)),
           color: isUser ? nightIndigo : bgWhite,
-          gradient: isUser ? const LinearGradient(colors: [nightIndigo, Color(0xFF3D3563)]) : const LinearGradient(colors: [bgWhite, bgWhite]),
+          gradient: isUser ? LinearGradient(colors: [nightIndigo, Color(0xFF3D3563)]) : LinearGradient(colors: [bgWhite, bgWhite]),
           boxShadow: isUser
               ? [BoxShadow(color: nightIndigo.withOpacity(0.2), blurRadius: 16, offset: const Offset(0, 4))]
               : [
@@ -642,7 +642,7 @@ class _LunaChatState extends State<LunaChat> {
     return Container(
       padding: const EdgeInsets.fromLTRB(12, 10, 12, 24),
       decoration: BoxDecoration(
-        gradient: const LinearGradient(colors: [bgWarm.withOpacity(0.6), bgWarm], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+        gradient: LinearGradient(colors: [bgWarm.withOpacity(0.6), bgWarm], begin: Alignment.topCenter, end: Alignment.bottomCenter),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -684,8 +684,8 @@ class _LunaChatState extends State<LunaChat> {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               gradient: active
-                  ? const LinearGradient(colors: [champagneGold, goldGlow])
-                  : const LinearGradient(colors: [lunaPurple, softLavender]),
+                  ? LinearGradient(colors: [champagneGold, goldGlow])
+                  : LinearGradient(colors: [lunaPurple, softLavender]),
               boxShadow: [
                 BoxShadow(color: active ? champagneGold.withOpacity(0.45) : lunaPurple.withOpacity(0.45), blurRadius: 28, offset: const Offset(0, 10)),
                 BoxShadow(color: warmCream.withOpacity(0.6), blurRadius: 0, spreadRadius: 4),

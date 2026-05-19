@@ -115,7 +115,7 @@ class _LunaOnboardingState extends State<LunaOnboarding> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(isCurrent ? 4 : 3),
               gradient: isCurrent
-                  ? const LinearGradient(colors: [lunaPurple, softLavender])
+                  ? LinearGradient(colors: [lunaPurple, softLavender])
                   : null,
               color: isDone ? softLavender : lineSoft,
             ),
@@ -388,7 +388,7 @@ class _LunaOnboardingState extends State<LunaOnboarding> {
             width: 76, height: 76,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              gradient: const LinearGradient(
+              gradient: LinearGradient(
                 colors: [paleLilac, lilacWash],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,

@@ -97,7 +97,7 @@ class _LunaGrowthState extends State<LunaGrowth> {
               padding: const EdgeInsets.all(22),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(26),
-                gradient: const LinearGradient(colors: [warmCream, bgWhite], begin: Alignment.topLeft, end: Alignment.bottomRight),
+                gradient: LinearGradient(colors: [warmCream, bgWhite], begin: Alignment.topLeft, end: Alignment.bottomRight),
                 boxShadow: [
                   BoxShadow(color: lunaPurple.withOpacity(0.07), blurRadius: 26, offset: const Offset(0, 10)),
                   BoxShadow(color: warmCream.withOpacity(0.5), blurRadius: 6, offset: const Offset(0, 2)),
@@ -151,7 +151,7 @@ class _LunaGrowthState extends State<LunaGrowth> {
       padding: const EdgeInsets.all(22),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(26),
-        gradient: const LinearGradient(
+        gradient: LinearGradient(
           colors: [Color(0xFFFFFFFF), Color(0xFFFFFDFA)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
