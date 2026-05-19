@@ -448,7 +448,6 @@ class _LunaChatState extends State<LunaChat> {
         padding: const EdgeInsets.all(18),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(22),
-          borderRadius: BorderRadius.circular(22),
           gradient: LinearGradient(
             colors: [mode['tint'] as Color, bgWhite],
             begin: Alignment.topLeft,

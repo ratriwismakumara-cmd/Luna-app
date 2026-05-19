@@ -8,7 +8,9 @@ class LunaGrowth extends StatefulWidget {
 
   @override
   State<LunaGrowth> createState() => _LunaGrowthState();
+}
 
+class _LunaGrowthState extends State<LunaGrowth> {
   // ── Design tokens ──
   static const nightIndigo = Color(0xFF2B2447);
   static const lunaPurple = Color(0xFF6B5FA6);
@@ -297,15 +299,15 @@ class _SourceLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = {
-      'parent-log': const [Color(0xFFF4EEF6), Color(0xFF6B5FA6)],
-      'luna-obs': const [Color(0xFFDBE8DC), Color(0xFF6A8C72)],
-      'assessment': const [Color(0xFFF7EAD6), Color(0xFFB89048)],
-      'school': const [Color(0xFFDCE3EE), Color(0xFF6F84A0)],
+      'parent-log': [Color(0xFFF4EEF6), Color(0xFF6B5FA6)],
+      'luna-obs': [Color(0xFFDBE8DC), Color(0xFF6A8C72)],
+      'assessment': [Color(0xFFF7EAD6), Color(0xFFB89048)],
+      'school': [Color(0xFFDCE3EE), Color(0xFF6F84A0)],
     };
     final c = colors[type] ?? colors['parent-log']!;
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
         color: c[0],
         borderRadius: BorderRadius.circular(999),
