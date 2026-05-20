@@ -35,7 +35,9 @@ class _LunaChatState extends State<LunaChat> {
   static const bondTint = Color(0xFFF2DDE8);
 
   // ── State ──
-  String _screen = 'home'; // 'home', 'category', 'chat'
+  bool _onboardingDone = false;
+  bool _onboardingDone = false;
+  String _screen = 'home'; // 'onboarding', 'home', 'category', 'chat'
   String _chatMode = 'reflection';
   final _messageController = TextEditingController();
   final List<Map<String, dynamic>> _messages = [];
@@ -49,6 +51,10 @@ class _LunaChatState extends State<LunaChat> {
     {'emoji': '🌿', 'name': 'Wellness', 'desc': 'Sleep, food, energy, routines', 'key': 'wellness', 'tint': calmTint},
     {'emoji': '👁', 'name': 'Observation', 'desc': 'Pattern noticing, social changes', 'key': 'observation', 'tint': insightTint},
   ];
+
+  void _onOnboardingComplete() {
+    setState(() => _onboardingDone = true);
+  }
 
   void _openChat(String modeKey) {
     final mode = _modes.firstWhere((m) => m['key'] == modeKey);
@@ -102,8 +108,97 @@ class _LunaChatState extends State<LunaChat> {
     super.dispose();
   }
 
+  // ── Onboarding ──
+  int _onboardingStep = 1;
+  Set<String> _selectedStyles = {};
+  Set<String> _selectedTraits = {};
+  Set<String> _selectedPriorities = {};
+  String _parentRole = '';
+
+  void _nextStep() {
+    setState(() {
+      if (_onboardingStep < 7) _onboardingStep++;
+      else _onOnboardingComplete();
+    });
+  }
+
+  Widget _buildOnboarding() {
+    final pages = <Widget>[
+      _buildWelcome(), _buildWhoParenting(), _buildChildProfile(),
+      _buildParentingStyle(), _buildPriorities(), _buildHowLunaGuides(), _buildReady(),
+    ];
+    return Container(
+      decoration: BoxDecoration(gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [bgWarm, warmCream, Color(0xFFF4EEF6)])),
+      child: SafeArea(child: Column(children: [
+        if (_onboardingStep < 7) Align(alignment: Alignment.topRight, child: TextButton(onPressed: _onOnboardingComplete, child: Text('Skip', style: TextStyle(color: textMuted, fontSize: 13)))),
+        Expanded(child: pages[_onboardingStep - 1]),
+        _buildOnboardingDots(),
+        _buildOnboardingButton(),
+        SizedBox(height: 20),
+      ])),
+    );
+  }
+
+  Widget _buildOnboardingDots() {
+    return Row(mainAxisAlignment: MainAxisAlignment.center, children: List.generate(7, (i) => Container(margin: EdgeInsets.symmetric(horizontal: 4), width: i == _onboardingStep - 1 ? 10 : 6, height: i == _onboardingStep - 1 ? 10 : 6, decoration: BoxDecoration(shape: BoxShape.circle, color: i == _onboardingStep - 1 ? lunaPurple : softLavender.withOpacity(0.4))))));
+  }
+
+  Widget _buildOnboardingButton() {
+    return Padding(padding: EdgeInsets.symmetric(horizontal: 24), child: ElevatedButton(onPressed: _nextStep, style: ElevatedButton.styleFrom(backgroundColor: lunaPurple, foregroundColor: Colors.white, padding: EdgeInsets.symmetric(horizontal: 40, vertical: 14), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30))), child: Text(_onboardingStep == 7 ? 'Begin Your Journey ✨' : 'Next →', style: TextStyle(fontSize: 15))));
+  }
+
+  Widget _buildWelcome() {
+    return Center(child: Padding(padding: EdgeInsets.all(24), child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+      Text('🌙', style: TextStyle(fontSize: 64)), SizedBox(height: 20),
+      Text('Welcome to Luna', style: TextStyle(fontFamily: 'DM Serif Display', fontSize: 30, color: nightIndigo)), SizedBox(height: 12),
+      Text('A calm space to reflect, understand, and grow together with your child. No judgment. No pressure.', textAlign: TextAlign.center, style: TextStyle(fontSize: 15, color: textMuted, height: 1.6)),
+      SizedBox(height: 24),
+      Container(padding: EdgeInsets.all(14), decoration: BoxDecoration(color: lilacWash, borderRadius: BorderRadius.circular(14)), child: Row(mainAxisSize: MainAxisSize.min, children: [Icon(Icons.lock_outline, size: 16, color: lunaPurple), SizedBox(width: 8), Text('Private. Secure. Yours.', style: TextStyle(fontSize: 13, color: lunaPurple))])),
+    ])));
+  }
+
+  Widget _buildWhoParenting() {
+    return _onboardingPage('👋', "Who's parenting?", 'This helps Luna tailor language and context to you.', Column(children: ['Parent', 'Co-parent', 'Caregiver', 'Expecting parent'].map((r) => Padding(padding: EdgeInsets.only(bottom: 8), child: GestureDetector(onTap: () => setState(() => _parentRole = r), child: Container(padding: EdgeInsets.all(14), decoration: BoxDecoration(color: _parentRole == r ? lunaPurple : Colors.white, borderRadius: BorderRadius.circular(14), border: Border.all(color: _parentRole == r ? lunaPurple : lineSoft)), child: Text(r, style: TextStyle(color: _parentRole == r ? Colors.white : textDeep, fontSize: 14)))))).toList())));
+  }
+
+  Widget _buildChildProfile() {
+    final traits = ['Sensitive', 'Curious', 'Independent', 'Thoughtful', 'Energetic', 'Shy'];
+    return _onboardingPage('✨', 'Tell me about your child', 'Age, personality, and what makes them unique.', Wrap(spacing: 8, children: traits.map((t) => GestureDetector(onTap: () => setState(() { if (_selectedTraits.contains(t)) _selectedTraits.remove(t); else _selectedTraits.add(t); }), child: Chip(label: Text(t, style: TextStyle(color: _selectedTraits.contains(t) ? Colors.white : textDeep, fontSize: 12)), backgroundColor: _selectedTraits.contains(t) ? lunaPurple : Colors.white, side: BorderSide(color: _selectedTraits.contains(t) ? lunaPurple : lineSoft)))).toList())));
+  }
+
+  Widget _buildParentingStyle() {
+    final styles = ['Structured', 'Warm', 'Flexible', 'Growth-focused', 'Independence-building', 'Nurturing'];
+    return _onboardingPage('🌱', 'Your parenting style', 'Luna will adapt its tone to match your values.', Wrap(spacing: 8, children: styles.map((s) => GestureDetector(onTap: () => setState(() { if (_selectedStyles.contains(s)) _selectedStyles.remove(s); else _selectedStyles.add(s); }), child: Chip(label: Text(s, style: TextStyle(color: _selectedStyles.contains(s) ? Colors.white : textDeep, fontSize: 12)), backgroundColor: _selectedStyles.contains(s) ? lunaPurple : Colors.white, side: BorderSide(color: _selectedStyles.contains(s) ? lunaPurple : lineSoft)))).toList())));
+  }
+
+  Widget _buildPriorities() {
+    final priorities = ['Emotional regulation', 'Confidence', 'Friendships', 'Discipline', 'Nutrition', 'Learning'];
+    return _onboardingPage('🎯', 'Your priorities right now', 'What matters most for your family this season?', Wrap(spacing: 8, children: priorities.map((p) => GestureDetector(onTap: () => setState(() { if (_selectedPriorities.contains(p)) _selectedPriorities.remove(p); else _selectedPriorities.add(p); }), child: Chip(label: Text(p, style: TextStyle(color: _selectedPriorities.contains(p) ? Colors.white : textDeep, fontSize: 12)), backgroundColor: _selectedPriorities.contains(p) ? lunaPurple : Colors.white, side: BorderSide(color: _selectedPriorities.contains(p) ? lunaPurple : lineSoft)))).toList())));
+  }
+
+  Widget _buildHowLunaGuides() {
+    return _onboardingPage('🧭', 'How Luna guides you', '', Column(children: [
+      _guideCard('✦', 'Personalized', 'Luna learns from your child profile and daily moments.'),
+      _guideCard('📚', 'Framework-backed', 'Whole-Brain Child, Emotion Coaching, CASEL, IB, and more.'),
+      _guideCard('🔒', 'Private', 'Your family data stays encrypted. You control everything.'),
+    ]));
+  }
+
+  Widget _guideCard(String icon, String title, String desc) {
+    return Card(elevation: 0, color: Colors.white, margin: EdgeInsets.only(bottom: 10), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)), child: Padding(padding: EdgeInsets.all(14), child: Row(children: [Text(icon, style: TextStyle(fontSize: 22)), SizedBox(width: 12), Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(title, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: nightIndigo)), SizedBox(height: 2), Text(desc, style: TextStyle(fontSize: 12, color: textMuted))]))])));
+  }
+
+  Widget _buildReady() {
+    return _onboardingPage('💫', "You're ready", 'Luna will grow with your family — learning patterns, remembering moments, and helping you parent with intention.', Column(children: [Text('"Growing together. Intentionally."', textAlign: TextAlign.center, style: TextStyle(fontStyle: FontStyle.italic, fontSize: 16, color: champagneGold))]));
+  }
+
+  Widget _onboardingPage(String emoji, String title, String subtitle, Widget body) {
+    return SingleChildScrollView(padding: EdgeInsets.all(24), child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [SizedBox(height: 20), Text(emoji, style: TextStyle(fontSize: 48)), SizedBox(height: 20), Text(title, style: TextStyle(fontFamily: 'DM Serif Display', fontSize: 26, color: nightIndigo)), SizedBox(height: 8), if (subtitle.isNotEmpty) Padding(padding: EdgeInsets.only(bottom: 24), child: Text(subtitle, textAlign: TextAlign.center, style: TextStyle(fontSize: 14, color: textMuted))), body]));
+  }
+
   @override
   Widget build(BuildContext context) {
+    if (!_onboardingDone) return _buildOnboarding();
     return Container(
       color: bgWarm,
       child: Column(
