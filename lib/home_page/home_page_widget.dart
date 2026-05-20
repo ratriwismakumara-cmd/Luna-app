@@ -1,29 +1,36 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
+import '/index.dart';
 import 'package:flutter/material.dart';
-import 'diary_page_model.dart';
-export 'diary_page_model.dart';
+import 'package:flutter/scheduler.dart';
+import 'home_page_model.dart';
+export 'home_page_model.dart';
 
-class DiaryPageWidget extends StatefulWidget {
-  const DiaryPageWidget({super.key});
+class HomePageWidget extends StatefulWidget {
+  const HomePageWidget({super.key});
 
-  static String routeName = 'DiaryPage';
-  static String routePath = '/diaryPage';
+  static String routeName = 'HomePage';
+  static String routePath = '/homePage';
 
   @override
-  State<DiaryPageWidget> createState() => _DiaryPageWidgetState();
+  State<HomePageWidget> createState() => _HomePageWidgetState();
 }
 
-class _DiaryPageWidgetState extends State<DiaryPageWidget> {
-  late DiaryPageModel _model;
+class _HomePageWidgetState extends State<HomePageWidget> {
+  late HomePageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => DiaryPageModel());
+    _model = createModel(context, () => HomePageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      context.pushNamed(ChatPageWidget.routeName);
+    });
   }
 
   @override
@@ -50,10 +57,10 @@ class _DiaryPageWidgetState extends State<DiaryPageWidget> {
             children: [
               Container(
                 width: double.infinity,
-                height: 725.0,
-                child: custom_widgets.LunaDiary(
+                height: 735.0,
+                child: custom_widgets.LunaOnboarding(
                   width: double.infinity,
-                  height: 725.0,
+                  height: 735.0,
                 ),
               ),
             ],

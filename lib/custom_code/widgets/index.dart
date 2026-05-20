@@ -1,3 +1,4 @@
+export 'luna_onboarding.dart' show LunaOnboarding;
 export 'luna_chat.dart' show LunaChat;
 export 'luna_diary.dart' show LunaDiary;
 export 'luna_growth.dart' show LunaGrowth;

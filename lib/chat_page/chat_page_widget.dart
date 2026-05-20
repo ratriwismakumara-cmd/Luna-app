@@ -2,28 +2,28 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
-import 'diary_page_model.dart';
-export 'diary_page_model.dart';
+import 'chat_page_model.dart';
+export 'chat_page_model.dart';
 
-class DiaryPageWidget extends StatefulWidget {
-  const DiaryPageWidget({super.key});
+class ChatPageWidget extends StatefulWidget {
+  const ChatPageWidget({super.key});
 
-  static String routeName = 'DiaryPage';
-  static String routePath = '/diaryPage';
+  static String routeName = 'ChatPage';
+  static String routePath = '/chatPage';
 
   @override
-  State<DiaryPageWidget> createState() => _DiaryPageWidgetState();
+  State<ChatPageWidget> createState() => _ChatPageWidgetState();
 }
 
-class _DiaryPageWidgetState extends State<DiaryPageWidget> {
-  late DiaryPageModel _model;
+class _ChatPageWidgetState extends State<ChatPageWidget> {
+  late ChatPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => DiaryPageModel());
+    _model = createModel(context, () => ChatPageModel());
   }
 
   @override
@@ -51,7 +51,7 @@ class _DiaryPageWidgetState extends State<DiaryPageWidget> {
               Container(
                 width: double.infinity,
                 height: 725.0,
-                child: custom_widgets.LunaDiary(
+                child: custom_widgets.LunaChat(
                   width: double.infinity,
                   height: 725.0,
                 ),

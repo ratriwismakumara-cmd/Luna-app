@@ -81,10 +81,10 @@ class _NutritionPageWidgetState extends State<NutritionPageWidget> {
             children: [
               Container(
                 width: double.infinity,
-                height: 680.0,
+                height: 725.0,
                 child: custom_widgets.LunaNutrition(
                   width: double.infinity,
-                  height: 680.0,
+                  height: 725.0,
                 ),
               ),
             ],
