@@ -72,12 +72,12 @@ class _LunaDiaryState extends State<LunaDiary> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Section header
-            const Padding(
+            Padding(
               padding: EdgeInsets.fromLTRB(24, 8, 24, 4),
               child: _SectionHeader(title: 'Family Diary'),
             ),
             // Subtitle
-            const Padding(
+            Padding(
               padding: EdgeInsets.fromLTRB(24, 4, 24, 8),
               child: Text(
                 'An emotional scrapbook — yours, timeless',
@@ -96,16 +96,16 @@ class _LunaDiaryState extends State<LunaDiary> {
               height: 36,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding: EdgeInsets.symmetric(horizontal: 20),
                 itemCount: _filters.length,
-                separatorBuilder: (_, __) => const SizedBox(width: 8),
+                separatorBuilder: (_, __) => SizedBox(width: 8),
                 itemBuilder: (_, i) {
                   final f = _filters[i];
                   final active = f == _activeFilter;
                   return GestureDetector(
                     onTap: () => setState(() => _activeFilter = f),
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+                      padding: EdgeInsets.symmetric(horizontal: 14, vertical: 6),
                       decoration: BoxDecoration(
                         color: active ? lunaPurple : bgWhite,
                         borderRadius: BorderRadius.circular(999),
@@ -120,18 +120,18 @@ class _LunaDiaryState extends State<LunaDiary> {
                 },
               ),
             ),
-            const SizedBox(height: 12),
+            SizedBox(height: 12),
             // Monthly recap
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20),
-              padding: const EdgeInsets.all(20),
+              margin: EdgeInsets.symmetric(horizontal: 20),
+              padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 gradient: LinearGradient(colors: [lilacWash, warmCream], begin: Alignment.topLeft, end: Alignment.bottomRight),
               ),
               child: Column(
                 children: [
-                  const Text(
+                  Text(
                     '"This month, you showed up — quietly and consistently."',
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -143,7 +143,7 @@ class _LunaDiaryState extends State<LunaDiary> {
                       height: 1.4,
                     ),
                   ),
-                  const SizedBox(height: 6),
+                  SizedBox(height: 6),
                   Text(
                     '4 core memories · 12 reflections · 2 breakthroughs',
                     style: TextStyle(fontSize: 12, color: textMuted.withOpacity(0.8)),
@@ -151,15 +151,15 @@ class _LunaDiaryState extends State<LunaDiary> {
                 ],
               ),
             ),
-            const SizedBox(height: 12),
+            SizedBox(height: 12),
             // Diary entries
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 children: filtered.map((entry) => _buildMemoryCard(entry)).toList(),
               ),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20),
           ],
         ),
       ),
@@ -168,8 +168,8 @@ class _LunaDiaryState extends State<LunaDiary> {
 
   Widget _buildMemoryCard(Map<String, dynamic> entry) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.fromLTRB(14, 18, 20, 18),
+      margin: EdgeInsets.only(bottom: 12),
+      padding: EdgeInsets.fromLTRB(14, 18, 20, 18),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(26),
         gradient: LinearGradient(
@@ -178,8 +178,8 @@ class _LunaDiaryState extends State<LunaDiary> {
           end: Alignment.bottomRight,
         ),
         boxShadow: [
-          BoxShadow(color: lunaPurple.withOpacity(0.07), blurRadius: 26, offset: const Offset(0, 10)),
-          BoxShadow(color: warmCream.withOpacity(0.5), blurRadius: 6, offset: const Offset(0, 2)),
+          BoxShadow(color: lunaPurple.withOpacity(0.07), blurRadius: 26, offset: Offset(0, 10)),
+          BoxShadow(color: warmCream.withOpacity(0.5), blurRadius: 6, offset: Offset(0, 2)),
         ],
       ),
       child: Row(
@@ -188,15 +188,15 @@ class _LunaDiaryState extends State<LunaDiary> {
           // Date column
           Container(
             width: 56,
-            padding: const EdgeInsets.only(right: 14),
-            decoration: const BoxDecoration(
+            padding: EdgeInsets.only(right: 14),
+            decoration: BoxDecoration(
               border: Border(right: BorderSide(color: lineFaint)),
             ),
             child: Column(
               children: [
                 Text(
                   entry['date'] as String,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontFamily: 'Cormorant Garamond',
                     fontSize: 13,
                     fontStyle: FontStyle.italic,
@@ -206,7 +206,7 @@ class _LunaDiaryState extends State<LunaDiary> {
                 ),
                 Text(
                   entry['day'] as String,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontFamily: 'Cormorant Garamond',
                     fontSize: 22,
                     fontStyle: FontStyle.italic,
@@ -217,7 +217,7 @@ class _LunaDiaryState extends State<LunaDiary> {
               ],
             ),
           ),
-          const SizedBox(width: 16),
+          SizedBox(width: 16),
           // Content
           Expanded(
             child: Column(
@@ -225,16 +225,16 @@ class _LunaDiaryState extends State<LunaDiary> {
               children: [
                 Text(
                   entry['title'] as String,
-                  style: const TextStyle(fontFamily: 'DM Serif Display', fontSize: 18, color: textDeep, height: 1.3),
+                  style: TextStyle(fontFamily: 'DM Serif Display', fontSize: 18, color: textDeep, height: 1.3),
                 ),
-                const SizedBox(height: 6),
+                SizedBox(height: 6),
                 Text(
                   entry['desc'] as String,
-                  style: const TextStyle(fontSize: 12, color: textMuted, height: 1.65),
+                  style: TextStyle(fontSize: 12, color: textMuted, height: 1.65),
                 ),
                 if (entry['core'] == true) ...[
-                  const SizedBox(height: 6),
-                  const Row(
+                  SizedBox(height: 6),
+                  Row(
                     children: [
                       Text('★ ', style: TextStyle(fontSize: 12, color: champagneGold)),
                       Text('Core Memory', style: TextStyle(fontSize: 9, color: champagneGold, fontWeight: FontWeight.w700, letterSpacing: 1.2)),
@@ -245,7 +245,7 @@ class _LunaDiaryState extends State<LunaDiary> {
             ),
           ),
           // Mood emoji
-          Text(entry['mood'] as String, style: const TextStyle(fontSize: 24)),
+          Text(entry['mood'] as String, style: TextStyle(fontSize: 24)),
         ],
       ),
     );
@@ -255,29 +255,29 @@ class _LunaDiaryState extends State<LunaDiary> {
 /// Section header with DM Serif Display + underline accent
 class _SectionHeader extends StatelessWidget {
   final String title;
-  const _SectionHeader({required this.title});
+  _SectionHeader({required this.title});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const SizedBox(height: 8),
+        SizedBox(height: 8),
         Text(
           title,
           textAlign: TextAlign.center,
-          style: const TextStyle(
+          style: TextStyle(
             fontFamily: 'DM Serif Display',
             fontSize: 30,
             color: Color(0xFF2B2447),
             letterSpacing: 0.3,
           ),
         ),
-        const SizedBox(height: 4),
+        SizedBox(height: 4),
         Container(
           width: 40,
           height: 2,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             gradient: LinearGradient(colors: [Color(0xFFD8B67A), Color(0x00D8B67A)]),
             borderRadius: BorderRadius.all(Radius.circular(2)),
           ),

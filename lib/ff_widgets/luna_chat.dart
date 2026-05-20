@@ -78,10 +78,10 @@ class _LunaChatState extends State<LunaChat> {
       });
     });
     _messageController.clear();
-    Future.delayed(const Duration(milliseconds: 100), () {
+    Future.delayed(Duration(milliseconds: 100), () {
       _scrollController.animateTo(
         _scrollController.position.maxScrollExtent,
-        duration: const Duration(milliseconds: 300),
+        duration: Duration(milliseconds: 300),
         curve: Curves.easeOut,
       );
     });
@@ -132,7 +132,7 @@ class _LunaChatState extends State<LunaChat> {
     final t = titles[_screen] ?? titles['home']!;
 
     return Container(
-      padding: const EdgeInsets.fromLTRB(24, 14, 24, 8),
+      padding: EdgeInsets.fromLTRB(24, 14, 24, 8),
       color: bgWarm,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -140,9 +140,9 @@ class _LunaChatState extends State<LunaChat> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(t[0], style: const TextStyle(fontSize: 10, color: textSoft, letterSpacing: 1.8, fontWeight: FontWeight.w500)),
-              const SizedBox(height: 2),
-              Text(t[1], style: const TextStyle(fontFamily: 'DM Serif Display', fontSize: 24, color: textDeep, letterSpacing: 0.2)),
+              Text(t[0], style: TextStyle(fontSize: 10, color: textSoft, letterSpacing: 1.8, fontWeight: FontWeight.w500)),
+              SizedBox(height: 2),
+              Text(t[1], style: TextStyle(fontFamily: 'DM Serif Display', fontSize: 24, color: textDeep, letterSpacing: 0.2)),
             ],
           ),
           GestureDetector(
@@ -152,9 +152,9 @@ class _LunaChatState extends State<LunaChat> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
                 gradient: LinearGradient(colors: [nightIndigo, Color(0xFF3D3563)], begin: Alignment.topLeft, end: Alignment.bottomRight),
-                boxShadow: [BoxShadow(color: nightIndigo.withOpacity(0.25), blurRadius: 14, offset: const Offset(0, 4))],
+                boxShadow: [BoxShadow(color: nightIndigo.withOpacity(0.25), blurRadius: 14, offset: Offset(0, 4))],
               ),
-              child: const Center(child: Text('🌙', style: TextStyle(fontSize: 22))),
+              child: Center(child: Text('🌙', style: TextStyle(fontSize: 22))),
             ),
           ),
         ],
@@ -165,24 +165,24 @@ class _LunaChatState extends State<LunaChat> {
   // ═══════════ HOME CONTENT ═══════════
   Widget _buildHomeContent() {
     return SingleChildScrollView(
-      padding: const EdgeInsets.fromLTRB(20, 8, 20, 20),
+      padding: EdgeInsets.fromLTRB(20, 8, 20, 20),
       child: Column(
         children: [
           // Hero card — Today's Recommendation
           _buildHeroCard(),
-          const SizedBox(height: 14),
+          SizedBox(height: 14),
           // Five calm signals label
           _buildFeatureLabel('✦ Five calm signals ✦'),
-          const SizedBox(height: 8),
+          SizedBox(height: 8),
           // Widget row — 2 cards
           _buildWidgetRow(),
-          const SizedBox(height: 12),
+          SizedBox(height: 12),
           // Full-width parenting focus widget
           _buildFullWidget(),
-          const SizedBox(height: 12),
+          SizedBox(height: 12),
           // Second widget row
           _buildSecondRow(),
-          const SizedBox(height: 16),
+          SizedBox(height: 16),
           // Talk to Luna button
           _buildTalkToLunaButton(),
         ],
@@ -192,27 +192,27 @@ class _LunaChatState extends State<LunaChat> {
 
   Widget _buildHeroCard() {
     return Container(
-      padding: const EdgeInsets.all(24),
+      padding: EdgeInsets.all(24),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(28),
         gradient: LinearGradient(colors: [nightIndigo, Color(0xFF3D3563)], begin: Alignment.topLeft, end: Alignment.bottomRight),
-        boxShadow: [BoxShadow(color: nightIndigo.withOpacity(0.25), blurRadius: 30, offset: const Offset(0, 12))],
+        boxShadow: [BoxShadow(color: nightIndigo.withOpacity(0.25), blurRadius: 30, offset: Offset(0, 12))],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('✦ Today\'s Recommendation', style: TextStyle(fontSize: 10, letterSpacing: 2, color: softLavender, fontWeight: FontWeight.w600)),
-          const SizedBox(height: 8),
-          const Text('Try 5 minutes of quiet presence after pickup today', style: TextStyle(fontFamily: 'DM Serif Display', fontSize: 22, color: bgWarm, height: 1.3)),
-          const SizedBox(height: 6),
+          Text('✦ Today\'s Recommendation', style: TextStyle(fontSize: 10, letterSpacing: 2, color: softLavender, fontWeight: FontWeight.w600)),
+          SizedBox(height: 8),
+          Text('Try 5 minutes of quiet presence after pickup today', style: TextStyle(fontFamily: 'DM Serif Display', fontSize: 22, color: bgWarm, height: 1.3)),
+          SizedBox(height: 6),
           Text('Your child\'s emotional tank is lower this week. A short transition ritual before any questions or requests may reduce evening overwhelm.', style: TextStyle(fontSize: 13, color: paleLilac.withOpacity(0.95), height: 1.6)),
-          const SizedBox(height: 14),
+          SizedBox(height: 14),
           GestureDetector(
             onTap: () => setState(() => _screen = 'category'),
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+              padding: EdgeInsets.symmetric(horizontal: 18, vertical: 8),
               decoration: BoxDecoration(color: champagneGold, borderRadius: BorderRadius.circular(999)),
-              child: const Text('Talk to Luna about it →', style: TextStyle(fontSize: 12, color: nightIndigo, fontWeight: FontWeight.w600)),
+              child: Text('Talk to Luna about it →', style: TextStyle(fontSize: 12, color: nightIndigo, fontWeight: FontWeight.w600)),
             ),
           ),
         ],
@@ -222,14 +222,14 @@ class _LunaChatState extends State<LunaChat> {
 
   Widget _buildFeatureLabel(String text) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      padding: EdgeInsets.symmetric(vertical: 8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(width: 30, height: 1, decoration: BoxDecoration(gradient: LinearGradient(colors: [Colors.transparent, champagneGold.withOpacity(0.4)]))),
-          const SizedBox(width: 12),
-          Text(text, style: const TextStyle(fontSize: 10, color: textSoft, letterSpacing: 2.5, fontWeight: FontWeight.w500)),
-          const SizedBox(width: 12),
+          SizedBox(width: 12),
+          Text(text, style: TextStyle(fontSize: 10, color: textSoft, letterSpacing: 2.5, fontWeight: FontWeight.w500)),
+          SizedBox(width: 12),
           Container(width: 30, height: 1, decoration: BoxDecoration(gradient: LinearGradient(colors: [champagneGold.withOpacity(0.4), Colors.transparent]))),
         ],
       ),
@@ -246,7 +246,7 @@ class _LunaChatState extends State<LunaChat> {
           title: 'Settled but tired',
           desc: 'After a long week, energy is gentle. Hold space for slow mornings.',
         )),
-        const SizedBox(width: 12),
+        SizedBox(width: 12),
         Expanded(child: _buildWidget(
           gradient: LinearGradient(colors: [warmCream, bgWhite], begin: Alignment.topLeft, end: Alignment.bottomRight),
           cornerDeco: '⚡',
@@ -260,13 +260,13 @@ class _LunaChatState extends State<LunaChat> {
 
   Widget _buildWidget({required Gradient gradient, required String cornerDeco, required String label, required String title, required String desc}) {
     return Container(
-      padding: const EdgeInsets.all(18),
+      padding: EdgeInsets.all(18),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(26),
         gradient: gradient,
         boxShadow: [
-          BoxShadow(color: lunaPurple.withOpacity(0.08), blurRadius: 28, offset: const Offset(0, 12)),
-          BoxShadow(color: warmCream.withOpacity(0.6), blurRadius: 8, offset: const Offset(0, 3)),
+          BoxShadow(color: lunaPurple.withOpacity(0.08), blurRadius: 28, offset: Offset(0, 12)),
+          BoxShadow(color: warmCream.withOpacity(0.6), blurRadius: 8, offset: Offset(0, 3)),
         ],
       ),
       child: Stack(
@@ -275,15 +275,15 @@ class _LunaChatState extends State<LunaChat> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(label, style: const TextStyle(fontSize: 9, letterSpacing: 2, color: textSoft, fontWeight: FontWeight.w500)),
-              const SizedBox(height: 8),
-              Text(title, style: const TextStyle(fontFamily: 'DM Serif Display', fontSize: 20, color: textDeep, height: 1.25)),
-              const SizedBox(height: 6),
-              Text(desc, style: const TextStyle(fontSize: 12, color: textMuted, height: 1.6)),
-              const SizedBox(height: 10),
+              Text(label, style: TextStyle(fontSize: 9, letterSpacing: 2, color: textSoft, fontWeight: FontWeight.w500)),
+              SizedBox(height: 8),
+              Text(title, style: TextStyle(fontFamily: 'DM Serif Display', fontSize: 20, color: textDeep, height: 1.25)),
+              SizedBox(height: 6),
+              Text(desc, style: TextStyle(fontSize: 12, color: textMuted, height: 1.6)),
+              SizedBox(height: 10),
               GestureDetector(
                 onTap: () => setState(() => _screen = 'category'),
-                child: const Row(
+                child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text('Ask Luna about this', style: TextStyle(fontSize: 11, color: lunaPurple, fontWeight: FontWeight.w600)),
@@ -301,13 +301,13 @@ class _LunaChatState extends State<LunaChat> {
 
   Widget _buildFullWidget() {
     return Container(
-      padding: const EdgeInsets.all(18),
+      padding: EdgeInsets.all(18),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(26),
         gradient: LinearGradient(colors: [lilacWash, bgWhite], begin: Alignment.topLeft, end: Alignment.bottomRight),
         boxShadow: [
-          BoxShadow(color: lunaPurple.withOpacity(0.08), blurRadius: 28, offset: const Offset(0, 12)),
-          BoxShadow(color: warmCream.withOpacity(0.6), blurRadius: 8, offset: const Offset(0, 3)),
+          BoxShadow(color: lunaPurple.withOpacity(0.08), blurRadius: 28, offset: Offset(0, 12)),
+          BoxShadow(color: warmCream.withOpacity(0.6), blurRadius: 8, offset: Offset(0, 3)),
         ],
       ),
       child: Stack(
@@ -316,21 +316,21 @@ class _LunaChatState extends State<LunaChat> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Parenting Focus', style: TextStyle(fontSize: 9, letterSpacing: 2, color: textSoft, fontWeight: FontWeight.w500)),
-              const SizedBox(height: 8),
-              const Text('Connection before correction', style: TextStyle(fontFamily: 'DM Serif Display', fontSize: 20, color: textDeep)),
-              const SizedBox(height: 8),
-              const Text('When your child resists transitions this week, try a few minutes of quiet presence first — a soft question about their day. Connection-first approaches are commonly used in emotion-coaching and whole-brain parenting frameworks.', style: TextStyle(fontSize: 12, color: textMuted, height: 1.6)),
-              const SizedBox(height: 12),
+              Text('Parenting Focus', style: TextStyle(fontSize: 9, letterSpacing: 2, color: textSoft, fontWeight: FontWeight.w500)),
+              SizedBox(height: 8),
+              Text('Connection before correction', style: TextStyle(fontFamily: 'DM Serif Display', fontSize: 20, color: textDeep)),
+              SizedBox(height: 8),
+              Text('When your child resists transitions this week, try a few minutes of quiet presence first — a soft question about their day. Connection-first approaches are commonly used in emotion-coaching and whole-brain parenting frameworks.', style: TextStyle(fontSize: 12, color: textMuted, height: 1.6)),
+              SizedBox(height: 12),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                 decoration: BoxDecoration(color: insightTint, borderRadius: BorderRadius.circular(999)),
-                child: const Text('Framework-informed', style: TextStyle(fontSize: 10, color: Color(0xFF6F84A0), fontWeight: FontWeight.w600, letterSpacing: 0.5)),
+                child: Text('Framework-informed', style: TextStyle(fontSize: 10, color: Color(0xFF6F84A0), fontWeight: FontWeight.w600, letterSpacing: 0.5)),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10),
               GestureDetector(
                 onTap: () => setState(() => _screen = 'category'),
-                child: const Row(
+                child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text('Ask Luna about this', style: TextStyle(fontSize: 11, color: lunaPurple, fontWeight: FontWeight.w600)),
@@ -350,7 +350,7 @@ class _LunaChatState extends State<LunaChat> {
     return Row(
       children: [
         Expanded(child: _buildMiniWidget('Connection Ritual', 'Sunset walk', '15 min · let them lead')),
-        const SizedBox(width: 12),
+        SizedBox(width: 12),
         Expanded(child: _buildMiniWidget('Recent Pattern', 'Evening overwhelm', '3 instances this week')),
       ],
     );
@@ -358,27 +358,27 @@ class _LunaChatState extends State<LunaChat> {
 
   Widget _buildMiniWidget(String label, String title, String desc) {
     return Container(
-      padding: const EdgeInsets.all(18),
+      padding: EdgeInsets.all(18),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(26),
         color: bgWhite,
         boxShadow: [
-          BoxShadow(color: lunaPurple.withOpacity(0.08), blurRadius: 28, offset: const Offset(0, 12)),
-          BoxShadow(color: warmCream.withOpacity(0.6), blurRadius: 8, offset: const Offset(0, 3)),
+          BoxShadow(color: lunaPurple.withOpacity(0.08), blurRadius: 28, offset: Offset(0, 12)),
+          BoxShadow(color: warmCream.withOpacity(0.6), blurRadius: 8, offset: Offset(0, 3)),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(label, style: const TextStyle(fontSize: 9, letterSpacing: 2, color: textSoft, fontWeight: FontWeight.w500)),
-          const SizedBox(height: 8),
-          Text(title, style: const TextStyle(fontFamily: 'DM Serif Display', fontSize: 16, color: textDeep)),
-          const SizedBox(height: 4),
-          Text(desc, style: const TextStyle(fontSize: 12, color: textMuted)),
-          const SizedBox(height: 10),
+          Text(label, style: TextStyle(fontSize: 9, letterSpacing: 2, color: textSoft, fontWeight: FontWeight.w500)),
+          SizedBox(height: 8),
+          Text(title, style: TextStyle(fontFamily: 'DM Serif Display', fontSize: 16, color: textDeep)),
+          SizedBox(height: 4),
+          Text(desc, style: TextStyle(fontSize: 12, color: textMuted)),
+          SizedBox(height: 10),
           GestureDetector(
             onTap: () => setState(() => _screen = 'category'),
-            child: const Row(
+            child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text('Reflect with Luna', style: TextStyle(fontSize: 11, color: lunaPurple, fontWeight: FontWeight.w600)),
@@ -397,13 +397,13 @@ class _LunaChatState extends State<LunaChat> {
       onTap: () => setState(() => _screen = 'category'),
       child: Container(
         width: double.infinity,
-        padding: const EdgeInsets.symmetric(vertical: 14),
+        padding: EdgeInsets.symmetric(vertical: 14),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(999),
           gradient: LinearGradient(colors: [lunaPurple, softLavender]),
-          boxShadow: [BoxShadow(color: lunaPurple.withOpacity(0.35), blurRadius: 24, offset: const Offset(0, 8))],
+          boxShadow: [BoxShadow(color: lunaPurple.withOpacity(0.35), blurRadius: 24, offset: Offset(0, 8))],
         ),
-        child: const Center(
+        child: Center(
           child: Text('✦ Talk to Luna', style: TextStyle(fontSize: 14, color: bgWarm, fontWeight: FontWeight.w600, letterSpacing: 0.5)),
         ),
       ),
@@ -415,17 +415,17 @@ class _LunaChatState extends State<LunaChat> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          const SizedBox(height: 24),
-          const Text('What kind of moment is this?', style: TextStyle(fontFamily: 'DM Serif Display', fontSize: 28, color: textDeep, letterSpacing: 0.2)),
-          const SizedBox(height: 6),
-          const Text('Pick a mode — Luna will shape its guidance to fit.', style: TextStyle(fontSize: 13, color: textMuted, height: 1.6)),
-          const SizedBox(height: 16),
+          SizedBox(height: 24),
+          Text('What kind of moment is this?', style: TextStyle(fontFamily: 'DM Serif Display', fontSize: 28, color: textDeep, letterSpacing: 0.2)),
+          SizedBox(height: 6),
+          Text('Pick a mode — Luna will shape its guidance to fit.', style: TextStyle(fontSize: 13, color: textMuted, height: 1.6)),
+          SizedBox(height: 16),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: EdgeInsets.symmetric(horizontal: 20),
             child: GridView.builder(
               shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              physics: NeverScrollableScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 12,
                 mainAxisSpacing: 12,
@@ -435,7 +435,7 @@ class _LunaChatState extends State<LunaChat> {
               itemBuilder: (_, i) => _buildCategoryCard(_modes[i]),
             ),
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16),
         ],
       ),
     );
@@ -445,7 +445,7 @@ class _LunaChatState extends State<LunaChat> {
     return GestureDetector(
       onTap: () => _openChat(mode['key']),
       child: Container(
-        padding: const EdgeInsets.all(18),
+        padding: EdgeInsets.all(18),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(22),
           gradient: LinearGradient(
@@ -455,18 +455,18 @@ class _LunaChatState extends State<LunaChat> {
           ),
           border: Border.all(color: Colors.transparent, width: 1.5),
           boxShadow: [
-            BoxShadow(color: lunaPurple.withOpacity(0.08), blurRadius: 24, offset: const Offset(0, 10)),
-            BoxShadow(color: warmCream.withOpacity(0.4), blurRadius: 6, offset: const Offset(0, 2)),
+            BoxShadow(color: lunaPurple.withOpacity(0.08), blurRadius: 24, offset: Offset(0, 10)),
+            BoxShadow(color: warmCream.withOpacity(0.4), blurRadius: 6, offset: Offset(0, 2)),
           ],
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(mode['emoji'] as String, style: const TextStyle(fontSize: 28)),
-            const SizedBox(height: 8),
-            Text(mode['name'] as String, style: const TextStyle(fontFamily: 'DM Serif Display', fontSize: 17, color: textDeep)),
-            const SizedBox(height: 4),
-            Text(mode['desc'] as String, textAlign: TextAlign.center, style: const TextStyle(fontSize: 11, color: textMuted, height: 1.4)),
+            Text(mode['emoji'] as String, style: TextStyle(fontSize: 28)),
+            SizedBox(height: 8),
+            Text(mode['name'] as String, style: TextStyle(fontFamily: 'DM Serif Display', fontSize: 17, color: textDeep)),
+            SizedBox(height: 4),
+            Text(mode['desc'] as String, textAlign: TextAlign.center, style: TextStyle(fontSize: 11, color: textMuted, height: 1.4)),
           ],
         ),
       ),
@@ -480,16 +480,16 @@ class _LunaChatState extends State<LunaChat> {
       children: [
         // Mode bar
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           color: lilacWash,
           child: Row(
             children: [
               GestureDetector(
                 onTap: () => setState(() => _screen = 'category'),
-                child: const Icon(Icons.arrow_back, size: 18, color: lunaPurple),
+                child: Icon(Icons.arrow_back, size: 18, color: lunaPurple),
               ),
-              const SizedBox(width: 10),
-              Text('${mode['emoji']} ${mode['name']} mode', style: const TextStyle(fontSize: 12, color: lunaPurple, fontWeight: FontWeight.w600)),
+              SizedBox(width: 10),
+              Text('${mode['emoji']} ${mode['name']} mode', style: TextStyle(fontSize: 12, color: lunaPurple, fontWeight: FontWeight.w600)),
             ],
           ),
         ),
@@ -497,30 +497,30 @@ class _LunaChatState extends State<LunaChat> {
         Expanded(
           child: ListView.builder(
             controller: _scrollController,
-            padding: const EdgeInsets.all(16),
+            padding: EdgeInsets.all(16),
             itemCount: _messages.length,
             itemBuilder: (_, i) => _buildMessageBubble(_messages[i]),
           ),
         ),
         // Chat actions row
         Padding(
-          padding: const EdgeInsets.fromLTRB(20, 8, 20, 0),
+          padding: EdgeInsets.fromLTRB(20, 8, 20, 0),
           child: Row(
             children: [
               _buildChatActionButton('🎙'),
-              const SizedBox(width: 8),
+              SizedBox(width: 8),
               _buildChatActionButton('📷'),
-              const SizedBox(width: 8),
+              SizedBox(width: 8),
               _buildChatActionButton('📖'),
-              const Spacer(),
-              const Text('Save to: ', style: TextStyle(fontSize: 10, color: textSoft)),
-              const Text('Diary →', style: TextStyle(fontSize: 10, color: lunaPurple, fontWeight: FontWeight.w600)),
+              Spacer(),
+              Text('Save to: ', style: TextStyle(fontSize: 10, color: textSoft)),
+              Text('Diary →', style: TextStyle(fontSize: 10, color: lunaPurple, fontWeight: FontWeight.w600)),
             ],
           ),
         ),
         // Input area
         Container(
-          padding: const EdgeInsets.fromLTRB(20, 14, 20, 16),
+          padding: EdgeInsets.fromLTRB(20, 14, 20, 16),
           decoration: BoxDecoration(
             color: bgWarm,
             border: Border(top: BorderSide(color: lineFaint)),
@@ -530,21 +530,21 @@ class _LunaChatState extends State<LunaChat> {
               Expanded(
                 child: TextField(
                   controller: _messageController,
-                  style: const TextStyle(fontSize: 13, color: textDeep),
+                  style: TextStyle(fontSize: 13, color: textDeep),
                   decoration: InputDecoration(
                     hintText: 'Share a moment with Luna...',
-                    hintStyle: const TextStyle(color: textFaint),
+                    hintStyle: TextStyle(color: textFaint),
                     filled: true,
                     fillColor: bgWhite,
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 13),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(999), borderSide: const BorderSide(color: lineSoft)),
-                    enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(999), borderSide: const BorderSide(color: lineSoft)),
-                    focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(999), borderSide: const BorderSide(color: softLavender)),
+                    contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 13),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(999), borderSide: BorderSide(color: lineSoft)),
+                    enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(999), borderSide: BorderSide(color: lineSoft)),
+                    focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(999), borderSide: BorderSide(color: softLavender)),
                   ),
                   onSubmitted: _sendMessage,
                 ),
               ),
-              const SizedBox(width: 10),
+              SizedBox(width: 10),
               GestureDetector(
                 onTap: () => _sendMessage(_messageController.text),
                 child: Container(
@@ -552,9 +552,9 @@ class _LunaChatState extends State<LunaChat> {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     gradient: LinearGradient(colors: [lunaPurple, softLavender]),
-                    boxShadow: [BoxShadow(color: lunaPurple.withOpacity(0.35), blurRadius: 20, offset: const Offset(0, 6))],
+                    boxShadow: [BoxShadow(color: lunaPurple.withOpacity(0.35), blurRadius: 20, offset: Offset(0, 6))],
                   ),
-                  child: const Icon(Icons.arrow_upward, color: bgWarm, size: 20),
+                  child: Icon(Icons.arrow_upward, color: bgWarm, size: 20),
                 ),
               ),
             ],
@@ -572,7 +572,7 @@ class _LunaChatState extends State<LunaChat> {
         color: bgWhite,
         border: Border.all(color: lineSoft),
       ),
-      child: Center(child: Text(emoji, style: const TextStyle(fontSize: 16))),
+      child: Center(child: Text(emoji, style: TextStyle(fontSize: 16))),
     );
   }
 
@@ -581,20 +581,20 @@ class _LunaChatState extends State<LunaChat> {
     return Align(
       alignment: isUser ? Alignment.centerRight : Alignment.centerLeft,
       child: Container(
-        margin: const EdgeInsets.only(bottom: 14),
-        padding: const EdgeInsets.fromLTRB(18, 14, 18, 14),
+        margin: EdgeInsets.only(bottom: 14),
+        padding: EdgeInsets.fromLTRB(18, 14, 18, 14),
         constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * (isUser ? 0.75 : 0.88)),
         decoration: BoxDecoration(
           borderRadius: isUser
-              ? const BorderRadius.only(topLeft: Radius.circular(22), topRight: Radius.circular(22), bottomLeft: Radius.circular(22), bottomRight: Radius.circular(6))
-              : const BorderRadius.only(topLeft: Radius.circular(22), topRight: Radius.circular(22), bottomRight: Radius.circular(22), bottomLeft: Radius.circular(6)),
+              ? BorderRadius.only(topLeft: Radius.circular(22), topRight: Radius.circular(22), bottomLeft: Radius.circular(22), bottomRight: Radius.circular(6))
+              : BorderRadius.only(topLeft: Radius.circular(22), topRight: Radius.circular(22), bottomRight: Radius.circular(22), bottomLeft: Radius.circular(6)),
           color: isUser ? nightIndigo : bgWhite,
           gradient: isUser ? LinearGradient(colors: [nightIndigo, Color(0xFF3D3563)]) : LinearGradient(colors: [bgWhite, bgWhite]),
           boxShadow: isUser
-              ? [BoxShadow(color: nightIndigo.withOpacity(0.2), blurRadius: 16, offset: const Offset(0, 4))]
+              ? [BoxShadow(color: nightIndigo.withOpacity(0.2), blurRadius: 16, offset: Offset(0, 4))]
               : [
-                  BoxShadow(color: softLavender.withOpacity(0.12), blurRadius: 24, offset: const Offset(0, 8)),
-                  BoxShadow(color: warmCream.withOpacity(0.5), blurRadius: 6, offset: const Offset(0, 2)),
+                  BoxShadow(color: softLavender.withOpacity(0.12), blurRadius: 24, offset: Offset(0, 8)),
+                  BoxShadow(color: warmCream.withOpacity(0.5), blurRadius: 6, offset: Offset(0, 2)),
                 ],
         ),
         child: Column(
@@ -602,11 +602,11 @@ class _LunaChatState extends State<LunaChat> {
           children: [
             if (!isUser && msg['modeEmoji'] != null)
               Padding(
-                padding: const EdgeInsets.only(bottom: 8),
+                padding: EdgeInsets.only(bottom: 8),
                 child: Row(
                   children: [
-                    Text('${msg['modeEmoji']} ', style: const TextStyle(fontSize: 14)),
-                    Text('${msg['modeName']} Mode', style: const TextStyle(fontSize: 10, color: lunaPurple, fontWeight: FontWeight.w600, letterSpacing: 1.2)),
+                    Text('${msg['modeEmoji']} ', style: TextStyle(fontSize: 14)),
+                    Text('${msg['modeName']} Mode', style: TextStyle(fontSize: 10, color: lunaPurple, fontWeight: FontWeight.w600, letterSpacing: 1.2)),
                   ],
                 ),
               ),
@@ -615,15 +615,15 @@ class _LunaChatState extends State<LunaChat> {
               style: TextStyle(fontSize: 13, height: 1.65, color: isUser ? bgWarm : textDeep),
             ),
             if (msg['hasFramework'] == true) ...[
-              const SizedBox(height: 12),
+              SizedBox(height: 12),
               Container(
-                padding: const EdgeInsets.all(12),
+                padding: EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   color: lilacWash,
                   borderRadius: BorderRadius.circular(10),
-                  border: const Border(left: BorderSide(color: lunaPurple, width: 2)),
+                  border: Border(left: BorderSide(color: lunaPurple, width: 2)),
                 ),
-                child: const Row(
+                child: Row(
                   children: [
                     Text('📚 ', style: TextStyle(fontSize: 12)),
                     Expanded(child: Text('Why Luna suggests this', style: TextStyle(fontSize: 10, color: lunaPurple, fontWeight: FontWeight.w500))),
@@ -640,7 +640,7 @@ class _LunaChatState extends State<LunaChat> {
   // ═══════════ BOTTOM NAV ═══════════
   Widget _buildBottomNav() {
     return Container(
-      padding: const EdgeInsets.fromLTRB(12, 10, 12, 24),
+      padding: EdgeInsets.fromLTRB(12, 10, 12, 24),
       decoration: BoxDecoration(
         gradient: LinearGradient(colors: [bgWarm.withOpacity(0.6), bgWarm], begin: Alignment.topCenter, end: Alignment.bottomCenter),
       ),
@@ -664,7 +664,7 @@ class _LunaChatState extends State<LunaChat> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(icon, size: 22, color: active ? lunaPurple : textSoft),
-          const SizedBox(height: 4),
+          SizedBox(height: 4),
           Text(label, style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500, color: active ? nightIndigo : textSoft)),
         ],
       ),
@@ -679,7 +679,7 @@ class _LunaChatState extends State<LunaChat> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            margin: const EdgeInsets.only(bottom: 4),
+            margin: EdgeInsets.only(bottom: 4),
             width: 60, height: 60,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
@@ -687,7 +687,7 @@ class _LunaChatState extends State<LunaChat> {
                   ? LinearGradient(colors: [champagneGold, goldGlow])
                   : LinearGradient(colors: [lunaPurple, softLavender]),
               boxShadow: [
-                BoxShadow(color: active ? champagneGold.withOpacity(0.45) : lunaPurple.withOpacity(0.45), blurRadius: 28, offset: const Offset(0, 10)),
+                BoxShadow(color: active ? champagneGold.withOpacity(0.45) : lunaPurple.withOpacity(0.45), blurRadius: 28, offset: Offset(0, 10)),
                 BoxShadow(color: warmCream.withOpacity(0.6), blurRadius: 0, spreadRadius: 4),
               ],
             ),

@@ -75,7 +75,7 @@ class _LunaOnboardingState extends State<LunaOnboarding> {
           children: [
             Expanded(
               child: AnimatedSwitcher(
-                duration: const Duration(milliseconds: 300),
+                duration: Duration(milliseconds: 300),
                 child: _buildStep(_step),
               ),
             ),
@@ -100,7 +100,7 @@ class _LunaOnboardingState extends State<LunaOnboarding> {
 
   Widget _stepIndicator(int current, int total) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      padding: EdgeInsets.symmetric(vertical: 8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: List.generate(total, (i) {
@@ -108,8 +108,8 @@ class _LunaOnboardingState extends State<LunaOnboarding> {
           final isCurrent = idx == current;
           final isDone = idx < current;
           return AnimatedContainer(
-            duration: const Duration(milliseconds: 300),
-            margin: const EdgeInsets.symmetric(horizontal: 3),
+            duration: Duration(milliseconds: 300),
+            margin: EdgeInsets.symmetric(horizontal: 3),
             width: isCurrent ? 24 : 6,
             height: 6,
             decoration: BoxDecoration(
@@ -127,16 +127,16 @@ class _LunaOnboardingState extends State<LunaOnboarding> {
 
   Widget _navButtons({bool isLast = false}) {
     return Padding(
-      padding: const EdgeInsets.only(top: 16),
+      padding: EdgeInsets.only(top: 16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           if (!isLast)
             TextButton(
               onPressed: _finish,
-              child: const Text('Skip', style: TextStyle(color: textMuted, fontSize: 13, fontWeight: FontWeight.w500)),
+              child: Text('Skip', style: TextStyle(color: textMuted, fontSize: 13, fontWeight: FontWeight.w500)),
             ),
-          if (!isLast) const SizedBox(width: 14),
+          if (!isLast) SizedBox(width: 14),
           ElevatedButton(
             onPressed: isLast ? _finish : _next,
             style: ElevatedButton.styleFrom(
@@ -149,7 +149,7 @@ class _LunaOnboardingState extends State<LunaOnboarding> {
             ),
             child: Text(
               isLast ? 'Begin Your Journey ✨' : 'Next →',
-              style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
+              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
             ),
           ),
         ],
@@ -160,18 +160,18 @@ class _LunaOnboardingState extends State<LunaOnboarding> {
   // ═══════════ STEP 1: WELCOME ═══════════
   Widget _buildWelcome() {
     return _onboardStep(
-      key: const ValueKey(1),
+      key: ValueKey(1),
       icon: '🌙',
       title: 'Welcome to Luna',
       subtitle: 'A calm space to reflect, understand, and grow together with your child. No judgment. No pressure.',
       extra: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-        padding: const EdgeInsets.all(14),
+        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        padding: EdgeInsets.all(14),
         decoration: BoxDecoration(
           color: lilacWash,
           borderRadius: BorderRadius.circular(14),
         ),
-        child: const Row(
+        child: Row(
           children: [
             Text('🔒 ', style: TextStyle(fontSize: 14)),
             Expanded(
@@ -190,20 +190,20 @@ class _LunaOnboardingState extends State<LunaOnboarding> {
   // ═══════════ STEP 2: WHO'S PARENTING ═══════════
   Widget _buildWhosParenting() {
     return _onboardStep(
-      key: const ValueKey(2),
+      key: ValueKey(2),
       icon: '👋',
       title: 'Who\'s parenting?',
       subtitle: 'This helps Luna tailor language and context to you.',
       extra: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
         child: Column(
           children: _roles.map((role) {
             final selected = _role == role;
             return GestureDetector(
               onTap: () => setState(() => _role = role),
               child: Container(
-                margin: const EdgeInsets.only(bottom: 8),
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 13),
+                margin: EdgeInsets.only(bottom: 8),
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 13),
                 decoration: BoxDecoration(
                   color: selected ? lilacWash : bgWhite,
                   borderRadius: BorderRadius.circular(16),
@@ -224,33 +224,33 @@ class _LunaOnboardingState extends State<LunaOnboarding> {
   // ═══════════ STEP 3: CHILD PROFILE ═══════════
   Widget _buildChildProfile() {
     return _onboardStep(
-      key: const ValueKey(3),
+      key: ValueKey(3),
       icon: '✨',
       title: 'Tell me about your child',
       subtitle: 'Age, personality, and what makes them unique. The more Luna understands, the more personal the guidance becomes.',
       extra: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 13),
+              padding: EdgeInsets.symmetric(horizontal: 18, vertical: 13),
               decoration: BoxDecoration(
                 color: bgWhite,
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(color: lineSoft),
               ),
               child: TextField(
-                decoration: const InputDecoration.collapsed(hintText: 'Child\'s age (e.g., 8 years)'),
-                style: const TextStyle(fontSize: 13),
+                decoration: InputDecoration.collapsed(hintText: 'Child\'s age (e.g., 8 years)'),
+                style: TextStyle(fontSize: 13),
                 onChanged: (v) => _childAge = v,
               ),
             ),
-            const SizedBox(height: 14),
-            const Align(
+            SizedBox(height: 14),
+            Align(
               alignment: Alignment.centerLeft,
               child: Text('Personality traits', style: TextStyle(fontSize: 11, color: textSoft)),
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: 8),
             _buildChipGrid(_traitsList, _traits),
           ],
         ),
@@ -262,12 +262,12 @@ class _LunaOnboardingState extends State<LunaOnboarding> {
   // ═══════════ STEP 4: PARENTING STYLE ═══════════
   Widget _buildParentingStyle() {
     return _onboardStep(
-      key: const ValueKey(4),
+      key: ValueKey(4),
       icon: '🌱',
       title: 'Your parenting style',
       subtitle: 'Luna will adapt its tone and guidance to match your values.',
       extra: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: EdgeInsets.symmetric(horizontal: 20),
         child: _buildChipGrid(_stylesList, _styles),
       ),
       step: 4,
@@ -277,12 +277,12 @@ class _LunaOnboardingState extends State<LunaOnboarding> {
   // ═══════════ STEP 5: PRIORITIES ═══════════
   Widget _buildPriorities() {
     return _onboardStep(
-      key: const ValueKey(5),
+      key: ValueKey(5),
       icon: '🎯',
       title: 'Your priorities right now',
       subtitle: 'What matters most for your family this season?',
       extra: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: EdgeInsets.symmetric(horizontal: 20),
         child: _buildChipGrid(_prioritiesList, _priorities),
       ),
       step: 5,
@@ -292,18 +292,18 @@ class _LunaOnboardingState extends State<LunaOnboarding> {
   // ═══════════ STEP 6: HOW LUNA GUIDES ═══════════
   Widget _buildHowLunaGuides() {
     return _onboardStep(
-      key: const ValueKey(6),
+      key: ValueKey(6),
       icon: '🧭',
       title: 'How Luna guides you',
       subtitle: 'Luna isn\'t a generic AI. Here\'s how guidance is shaped:',
       extra: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
             _buildGuideCard('✦ Personalized', 'Luna learns from your child\'s profile and daily moments you share.', lunaPurple),
-            const SizedBox(height: 10),
+            SizedBox(height: 10),
             _buildGuideCard('📚 Framework-backed', 'Luna uses trusted parenting frameworks — Whole-Brain Child, Emotion Coaching, CASEL, IB, and more.', champagneGold),
-            const SizedBox(height: 10),
+            SizedBox(height: 10),
             _buildGuideCard('🔒 Private', 'Your family data stays encrypted and family-only. You control everything.', softLavender),
           ],
         ),
@@ -315,7 +315,7 @@ class _LunaOnboardingState extends State<LunaOnboarding> {
   Widget _buildGuideCard(String title, String desc, Color accent) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: bgWhite,
         borderRadius: BorderRadius.circular(16),
@@ -324,9 +324,9 @@ class _LunaOnboardingState extends State<LunaOnboarding> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: const TextStyle(fontFamily: 'DM Serif Display', fontSize: 15, color: textDeep)),
-          const SizedBox(height: 4),
-          Text(desc, style: const TextStyle(fontSize: 12, color: textMuted, height: 1.6)),
+          Text(title, style: TextStyle(fontFamily: 'DM Serif Display', fontSize: 15, color: textDeep)),
+          SizedBox(height: 4),
+          Text(desc, style: TextStyle(fontSize: 12, color: textMuted, height: 1.6)),
         ],
       ),
     );
@@ -335,13 +335,13 @@ class _LunaOnboardingState extends State<LunaOnboarding> {
   // ═══════════ STEP 7: READY ═══════════
   Widget _buildReady() {
     return _onboardStep(
-      key: const ValueKey(7),
+      key: ValueKey(7),
       icon: '💫',
       title: 'You\'re ready',
       subtitle: 'Luna will grow with your family — learning patterns, remembering moments, and helping you parent with intention.',
       extra: Column(
         children: [
-          const Padding(
+          Padding(
             padding: EdgeInsets.symmetric(vertical: 8),
             child: Text(
               '"Growing together. Intentionally."',
@@ -349,13 +349,13 @@ class _LunaOnboardingState extends State<LunaOnboarding> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-            padding: const EdgeInsets.all(14),
+            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+            padding: EdgeInsets.all(14),
             decoration: BoxDecoration(
               color: lilacWash,
               borderRadius: BorderRadius.circular(14),
             ),
-            child: const Text(
+            child: Text(
               '📤 Optional later: upload assessments, school reports, developmental notes • invite co-parent to sync',
               style: TextStyle(fontSize: 11, color: lunaPurple, fontWeight: FontWeight.w500),
               textAlign: TextAlign.center,
@@ -381,7 +381,7 @@ class _LunaOnboardingState extends State<LunaOnboarding> {
   }) {
     return SingleChildScrollView(
       key: key,
-      padding: const EdgeInsets.fromLTRB(36, 40, 36, 20),
+      padding: EdgeInsets.fromLTRB(36, 40, 36, 20),
       child: Column(
         children: [
           Container(
@@ -393,17 +393,17 @@ class _LunaOnboardingState extends State<LunaOnboarding> {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
-              boxShadow: [BoxShadow(color: softLavender.withOpacity(0.25), blurRadius: 24, offset: const Offset(0, 8))],
+              boxShadow: [BoxShadow(color: softLavender.withOpacity(0.25), blurRadius: 24, offset: Offset(0, 8))],
             ),
-            child: Center(child: Text(icon, style: const TextStyle(fontSize: 36))),
+            child: Center(child: Text(icon, style: TextStyle(fontSize: 36))),
           ),
-          const SizedBox(height: 24),
-          Text(title, style: const TextStyle(fontFamily: 'DM Serif Display', fontSize: 32, color: textDeep, letterSpacing: 0.2)),
-          const SizedBox(height: 12),
-          Text(subtitle, textAlign: TextAlign.center, style: const TextStyle(fontSize: 13, color: textMuted, height: 1.75)),
-          const SizedBox(height: 16),
+          SizedBox(height: 24),
+          Text(title, style: TextStyle(fontFamily: 'DM Serif Display', fontSize: 32, color: textDeep, letterSpacing: 0.2)),
+          SizedBox(height: 12),
+          Text(subtitle, textAlign: TextAlign.center, style: TextStyle(fontSize: 13, color: textMuted, height: 1.75)),
+          SizedBox(height: 16),
           extra,
-          const SizedBox(height: 4),
+          SizedBox(height: 4),
           _stepIndicator(step, _totalSteps),
           if (showNav && step < 7) _navButtons(),
         ],
@@ -420,7 +420,7 @@ class _LunaOnboardingState extends State<LunaOnboarding> {
         return GestureDetector(
           onTap: () => _toggleSelection(selected, item),
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             decoration: BoxDecoration(
               color: isSelected ? lilacWash : bgWhite,
               borderRadius: BorderRadius.circular(16),
