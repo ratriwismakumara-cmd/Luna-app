@@ -203,7 +203,6 @@ class _LunaChatState extends State<LunaChat> {
       color: bgWarm,
       child: Column(
         children: [
-          _buildAppHeader(),
           Expanded(
             child: _screen == 'home'
                 ? _buildHomeContent()
@@ -211,51 +210,12 @@ class _LunaChatState extends State<LunaChat> {
                     ? _buildCategorySelector()
                     : _buildChatView(),
           ),
-          _buildBottomNav(),
         ],
       ),
     );
   }
 
-  // ═══════════ APP HEADER ═══════════
-  Widget _buildAppHeader() {
-    final titles = {
-      'home': ['Today\'s Family Snapshot', 'Your Child · 8 yrs'],
-      'category': ['Conversation', 'Luna ✦'],
-      'chat': ['Conversation', 'Luna ✦'],
-    };
-    final t = titles[_screen] ?? titles['home']!;
 
-    return Container(
-      padding: EdgeInsets.fromLTRB(24, 14, 24, 8),
-      color: bgWarm,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(t[0], style: TextStyle(fontSize: 10, color: textSoft, letterSpacing: 1.8, fontWeight: FontWeight.w500)),
-              SizedBox(height: 2),
-              Text(t[1], style: TextStyle(fontFamily: 'DM Serif Display', fontSize: 24, color: textDeep, letterSpacing: 0.2)),
-            ],
-          ),
-          GestureDetector(
-            onTap: () => setState(() => _screen = _screen == 'home' ? 'category' : 'home'),
-            child: Container(
-              width: 44, height: 44,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(14),
-                gradient: LinearGradient(colors: [nightIndigo, Color(0xFF3D3563)], begin: Alignment.topLeft, end: Alignment.bottomRight),
-                boxShadow: [BoxShadow(color: nightIndigo.withOpacity(0.25), blurRadius: 14, offset: Offset(0, 4))],
-              ),
-              child: Center(child: Text('🌙', style: TextStyle(fontSize: 22))),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 
   // ═══════════ HOME CONTENT ═══════════
   Widget _buildHomeContent() {
@@ -732,70 +692,4 @@ class _LunaChatState extends State<LunaChat> {
     );
   }
 
-  // ═══════════ BOTTOM NAV ═══════════
-  Widget _buildBottomNav() {
-    return Container(
-      padding: EdgeInsets.fromLTRB(12, 10, 12, 24),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(colors: [bgWarm.withOpacity(0.6), bgWarm], begin: Alignment.topCenter, end: Alignment.bottomCenter),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _buildNavItem(Icons.book_outlined, 'Diary', false),
-          _buildNavItem(Icons.trending_up, 'Growth', false),
-          _buildNavLuna(),
-          _buildNavItem(Icons.restaurant, 'Nutrition', false),
-          _buildNavItem(Icons.person_outline, 'Profile', false),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildNavItem(IconData icon, String label, bool active) {
-    return SizedBox(
-      width: 56,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: 22, color: active ? lunaPurple : textSoft),
-          SizedBox(height: 4),
-          Text(label, style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500, color: active ? nightIndigo : textSoft)),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildNavLuna() {
-    final active = _screen == 'category' || _screen == 'chat';
-    return SizedBox(
-      width: 56,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            margin: EdgeInsets.only(bottom: 4),
-            width: 60, height: 60,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              gradient: active
-                  ? LinearGradient(colors: [champagneGold, goldGlow])
-                  : LinearGradient(colors: [lunaPurple, softLavender]),
-              boxShadow: [
-                BoxShadow(color: active ? champagneGold.withOpacity(0.45) : lunaPurple.withOpacity(0.45), blurRadius: 28, offset: Offset(0, 10)),
-                BoxShadow(color: warmCream.withOpacity(0.6), blurRadius: 0, spreadRadius: 4),
-              ],
-            ),
-            child: Center(
-              child: Text(
-                active ? '✦' : '✦',
-                style: TextStyle(fontFamily: 'DM Serif Display', fontSize: 24, color: active ? nightIndigo : bgWarm),
-              ),
-            ),
-          ),
-          Text('Luna', style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: lunaPurple, letterSpacing: 0.5)),
-        ],
-      ),
-    );
-  }
-}
+  // ═══════════ BOTTOM NAV ═══════════}
