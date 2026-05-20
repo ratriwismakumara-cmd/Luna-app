@@ -49,13 +49,13 @@ class _LunaOnboardingState extends State<LunaOnboarding> {
       setState(() => _step++);
     } else {
       widget.onComplete?.call();
-    Navigator.of(context).pushNamedAndRemoveUntil('/chatPage', (route) => false);
+    Navigator.of(context).pushReplacementNamed('/ChatPage');
     }
   }
 
   void _finish() {
     widget.onComplete?.call();
-    Navigator.of(context).pushNamedAndRemoveUntil('/chatPage', (route) => false);
+    Navigator.of(context).pushReplacementNamed('/ChatPage');
   }
 
   void _toggleSelection(Set<String> set, String item) {
