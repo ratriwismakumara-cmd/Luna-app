@@ -38,12 +38,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ? Builder(
               builder: (context) => Container(
                 color: Colors.transparent,
-                child: Center(
-                  child: Image.asset(
-                    'assets/images/ChatGPT_Image_May_20,_2026,_12_01_36_PM.png',
-                    width: double.infinity,
-                    fit: BoxFit.contain,
-                  ),
+                child: Image.asset(
+                  'assets/images/ChatGPT_Image_May_20,_2026,_12_12_51_PM.png',
+                  fit: BoxFit.contain,
                 ),
               ),
             )
@@ -56,12 +53,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ? Builder(
                   builder: (context) => Container(
                     color: Colors.transparent,
-                    child: Center(
-                      child: Image.asset(
-                        'assets/images/ChatGPT_Image_May_20,_2026,_12_01_36_PM.png',
-                        width: double.infinity,
-                        fit: BoxFit.contain,
-                      ),
+                    child: Image.asset(
+                      'assets/images/ChatGPT_Image_May_20,_2026,_12_12_51_PM.png',
+                      fit: BoxFit.contain,
                     ),
                   ),
                 )
